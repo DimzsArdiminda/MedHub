@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class MainMenu extends StatefulWidget {
@@ -11,129 +9,119 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Notifications',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: Add',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Chat',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 4: Profile',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Main Menu'),
+        title: const Text('BottomNavigationBar Sample'),
+        automaticallyImplyLeading: false,
       ),
-      body: Stack(
-        children: [
-          Container(
-            margin: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Center(
-                  child: AnimatedTextKit(
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        'dfriends-app!',
-                        textStyle: const TextStyle(
-                          fontSize: 32.0,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF6610f2),
-                        ),
-                        speed: const Duration(milliseconds: 100),
-                      ),
-                    ],
-                    repeatForever: true,
-                  ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: '',
+          ),
+            BottomNavigationBarItem(
+            icon: Stack(
+              children: <Widget>[
+              Icon(Icons.notifications_outlined),
+              Positioned(
+                right: 0,
+                child: Container(
+                padding: EdgeInsets.all(1),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(6),
                 ),
+                constraints: BoxConstraints(
+                  minWidth: 12,
+                  minHeight: 12,
+                ),
+                child: Text(
+                  '',
+                  style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 8,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                ),
+              ),
               ],
             ),
-          ),
-          Expanded(
-            child: DraggableScrollableSheet(
-              initialChildSize: 0.8,
-              minChildSize: 0.2,
-              maxChildSize: 0.8,
-              builder: (BuildContext context, ScrollController scrollController) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xFF6610f2),
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  ),
-                  child: ListView(
-                    controller: scrollController,
-                    padding: EdgeInsets.all(20),
-                    children: [
-                      // Decorative box
-                      Center(
-                        child: Container(
-                          width: 60,
-                          height: 6,
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.6),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      
-                      // Title Text
-                      Center(
-                        child: Text(
-                          "Anxiety Test Using Dass 42 Method",
-                          style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      SizedBox(height: 30),
-
-                      // Buttons Row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                              textStyle: TextStyle(fontSize: 15),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            // onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Anxiety())),
-                            // ignore: avoid_print
-                            onPressed: () => print("halo"),
-                            child: Text('Anxiety'),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 23, 20, 20),
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                              textStyle: TextStyle(fontSize: 15),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: () => print("Depression Test"),
-                            child: Text('Depression'),
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                              textStyle: TextStyle(fontSize: 15),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: () => print("Stress Test"),
-                            child: Text('Stress'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
+            label: '',
             ),
+          BottomNavigationBarItem(
+            icon: Container(
+              padding: EdgeInsets.all(6), // Padding untuk memberi jarak di sekitar ikon
+              decoration: BoxDecoration(
+                color: Color(0xFF0F3759),
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Icon(
+                Icons.add_box_outlined,
+                color: Colors.white,
+              ),
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'asset/logos/icon1.png',
+              width: 24,
+              height: 24,
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: '',
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: false, // Sembunyikan label untuk lebih rapi
+        onTap: _onItemTapped,
       ),
     );
   }

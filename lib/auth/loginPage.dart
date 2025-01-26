@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:dfreindsapp/auth/register.dart';
+import 'package:dfreindsapp/main_menu/menu.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -143,7 +144,13 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: _submit,
+                          // onPressed: _submit,
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainMenu(),
+                            ),
+                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF0F3759),
                             padding: EdgeInsets.all(15),

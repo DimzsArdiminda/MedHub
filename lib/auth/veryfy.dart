@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace, avoid_print
 
 import 'package:dfreindsapp/auth/register.dart';
+import 'package:dfreindsapp/auth/succes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Untuk inputFormatters
 
@@ -105,7 +106,13 @@ class _VerifyState extends State<Verify> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: _submit,
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Succes(),
+                      ),
+                    ),
+                    // onPressed: _submit,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF0F3759),
                       padding: EdgeInsets.all(15),
