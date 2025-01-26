@@ -66,6 +66,12 @@ flutter:
     - asset/img/login.jpg
     - asset/splash/logo-splashscreen.png
     - asset/splash/Mask Group.png
+    - asset/Onboard 1/Group 1207.png
+    - asset/Onboard 2/Group 1208.png
+    - asset/Onboard 2/Mask Group.png
+    - asset/login/facbook logo.png
+    - asset/login/google.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

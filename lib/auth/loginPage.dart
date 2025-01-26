@@ -31,106 +31,88 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(
-                  'asset/img/login.jpg',
-                  height: 150,
-                ),
-                SizedBox(height: 20),
-                WidgetAnimator(
-                incomingEffect: WidgetTransitionEffects.incomingSlideInFromBottom(),
-                child: TextAnimator("Welcome to dfriends-app",    
-                  style: TextStyle(
-                    color: Colors.purple,
-                    fontSize: 20,
-                  ),
-                )
-                ),
-                SizedBox(height: 30),
-                Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: "Email",
-                              // border: OutlineInputBorder(),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration(
+                            labelText: "Email",
+                            // border: OutlineInputBorder(),
+                          ),
+                          onSaved: (value) => email = value,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Please enter your email";
+                            } else if (!value.contains('@')) {
+                              return "Please enter a valid email";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 20),
+                        TextFormField(
+                          obscureText: !showPassword,
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            // border: OutlineInputBorder(),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                showPassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: _togglePasswordVisibility,
                             ),
-                            onSaved: (value) => email = value,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your email";
-                              } else if (!value.contains('@')) {
-                                return "Please enter a valid email";
-                              }
-                              return null;
-                            },
                           ),
-                          SizedBox(height: 20),
-                          TextFormField(
-                            obscureText: !showPassword,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              // border: OutlineInputBorder(),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  showPassword
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                                onPressed: _togglePasswordVisibility,
+                          onSaved: (value) => password = value,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Please enter your password";
+                            // } else if (value.length < 6) {
+                            //   return "Password must be at least 6 characters";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: _submit,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF6610f2),
+                                padding: EdgeInsets.all(15),
+                                foregroundColor: Colors.white,
+                                textStyle: TextStyle(fontSize: 18),
                               ),
+                              child: Text("Login"),
                             ),
-                            onSaved: (value) => password = value,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter your password";
-                              // } else if (value.length < 6) {
-                              //   return "Password must be at least 6 characters";
-                              }
-                              return null;
-                            },
-                          ),
-                          SizedBox(height: 15),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: _submit,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFF6610f2),
-                                  padding: EdgeInsets.all(15),
-                                  foregroundColor: Colors.white,
-                                  textStyle: TextStyle(fontSize: 18),
-                                ),
-                                child: Text("Login"),
+                            SizedBox(width: 10),
+                            ElevatedButton(
+                              onPressed: _submit,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFF6610f2),
+                                padding: EdgeInsets.all( 15),
+                                foregroundColor: Colors.white,
+                                textStyle: TextStyle(fontSize: 18),
                               ),
-                              SizedBox(width: 10),
-                              ElevatedButton(
-                                onPressed: _submit,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFF6610f2),
-                                  padding: EdgeInsets.all( 15),
-                                  foregroundColor: Colors.white,
-                                  textStyle: TextStyle(fontSize: 18),
-                                ),
-                                child: Text("Register"),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                              child: Text("Register"),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),

@@ -3,6 +3,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dfreindsapp/auth/loginPage.dart';
 import 'package:dfreindsapp/main_menu/menu.dart';
+import 'package:dfreindsapp/onBoarding/onBoarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,7 +22,7 @@ class _SplassScreenState extends State<SplassScreen>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => LoginPage()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => OnBoarding()));
     });
   }
 
