@@ -1,16 +1,17 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors
 
-import 'package:dfreindsapp/auth/register.dart';
+import 'package:dfreindsapp/auth/loginPage.dart';
+import 'package:dfreindsapp/auth/veryfy.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   String? username, password;
   bool showPassword = false;
@@ -47,24 +48,22 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             // Tulisan Welcome Back
             Text(
-              "Welcome Back!",
+              "Create Your Account!",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 20), // Tambahkan sedikit ruang setelah judul
+            SizedBox(height: 20),
             Form(
               key: _formKey,
               child: Column(
                 children: [
-                  // Input Username
+                  // Input Name
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Username",
+                      labelText: "Your Name",
                       labelStyle: TextStyle(color: Colors.grey),
-                      prefixIcon:
-                          Icon(Icons.person_2_outlined, color: Colors.grey),
                       focusedBorder: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Color(0xFF00A59B), width: 2),
@@ -79,7 +78,59 @@ class _LoginPageState extends State<LoginPage> {
                     onSaved: (value) => username = value,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return "Please enter your username";
+                        return "Please enter your name";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: "Mobile Number",
+                      labelStyle: TextStyle(color: Colors.grey),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xFF00A59B), width: 2),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                      ),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onSaved: (value) => username = value,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your mobile number";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      labelStyle: TextStyle(color: Colors.grey),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xFF00A59B), width: 2),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 1),
+                      ),
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onSaved: (value) => username = value,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter your email";
+                      } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
+                          .hasMatch(value)) {
+                        return "Please enter a valid email address";
                       }
                       return null;
                     },
@@ -101,23 +152,10 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             onPressed: _togglePasswordVisibility,
                           ),
-                          TextButton(
-                            onPressed: () {
-                              // Aksi untuk tombol "Forgot"
-                            },
-                            child: Text(
-                              "Forgot",
-                              style: TextStyle(
-                                color: Color(0xFF00A59B),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                       labelText: "Password",
                       labelStyle: TextStyle(color: Colors.grey),
-                      prefixIcon:
-                          Icon(Icons.lock_outline_rounded, color: Colors.grey),
                       focusedBorder: UnderlineInputBorder(
                         borderSide:
                             BorderSide(color: Color(0xFF00A59B), width: 2),
@@ -143,7 +181,13 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: _submit,
+                          // onPressed: _submit,
+                          onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Verify(),
+                            ),
+                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF0F3759),
                             padding: EdgeInsets.all(15),
@@ -158,18 +202,17 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            Spacer(),
-            // Tombol Sign Up di paling bawah
+
             Center(
               child: TextButton(
                 onPressed: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Register(),
+                    builder: (context) => LoginPage(),
                   ),
                 ),
                 child: Text(
-                  "< Don't have an account? Sign Up",
+                  "< Already have account?  Login",
                   style: TextStyle(color: Colors.grey, fontSize: 16),
                 ),
               ),
