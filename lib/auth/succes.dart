@@ -46,10 +46,11 @@ class _SuccesState extends State<Succes> with SingleTickerProviderStateMixin {
       ),
       body: Center(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16),
+          margin: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 60),
                Image.asset(
                 'asset/login success/Group 3645.png',
                 height: 200,
@@ -67,7 +68,8 @@ class _SuccesState extends State<Succes> with SingleTickerProviderStateMixin {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 15, color: Colors.grey),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 140),
+
 
               // Tombol Continue
               ElevatedButton(

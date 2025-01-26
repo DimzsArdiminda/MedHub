@@ -48,7 +48,7 @@ class _VerifyState extends State<Verify> {
           children: [
             // Judul
             Text(
-              "Enter the verification code",
+              "Enter the verify code",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,

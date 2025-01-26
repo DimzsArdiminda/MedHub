@@ -48,7 +48,7 @@ class _RegisterState extends State<Register> {
           children: [
             // Tulisan Welcome Back
             Text(
-              "Create Your Account!",
+              "Create your account!",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
