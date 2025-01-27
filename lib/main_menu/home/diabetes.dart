@@ -96,26 +96,30 @@ class _DiabetesState extends State<Diabetes> {
                   // Data contoh untuk setiap item
                   final List<Map<String, dynamic>> deals = [
                     {
-                      "imagePath": "asset/obat/image.png",
-                      "title": "Tablet Bottle Mockup",
+                      "imagePath": "asset/img/image 20.png",
+                      "title": "Accu-check Active \nTest Strip",
                       "price": "Rp 112.000",
+                      "disc": "SALE",
+                      "color" : Colors.red,
                       "rating": 4.2,
                     },
                     {
-                      "imagePath": "asset/obat/image2.png",
-                      "title": "Tablet Bottle",
+                      "imagePath": "asset/img/image 21.png",
+                      "title": "Omron HEM-8712 \nBP Monitor",
                       "price": "Rp 150.000",
+                      "disc" : "15% off",
+                      "color" : Colors.amber,
                       "rating": 4.2,
                     },
                     {
                       "imagePath": "asset/obat/obat5.png",
-                      "title": "Tablet Bottle",
+                      "title": "Accu-check Active \nTest Strip",
                       "price": "Rp 112.000",
                       "rating": 4.2,
                     },
                     {
                       "imagePath": "asset/obat/obat5.png",
-                      "title": "Tablet Bottle",
+                      "title": "Omron HEM-8712 \nBP Monitor",
                       "price": "Rp 150.000",
                       "rating": 4.2,
                     },
@@ -129,8 +133,13 @@ class _DiabetesState extends State<Diabetes> {
                       imagePath: deal["imagePath"],
                       title: deal["title"],
                       price: deal["price"],
+                      disc: deal["disc"],
+                      link: deal["link"],
+                      color: deal["color"],
                       rating: deal["rating"],
                     );
+
+                    
                   } else {
                     // Placeholder jika index lebih besar dari panjang deals
                     // return SizedBox();

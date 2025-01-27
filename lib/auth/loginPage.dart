@@ -93,15 +93,15 @@ class _LoginPageState extends State<LoginPage> {
                       suffixIcon: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          IconButton(
-                            icon: Icon(
-                              showPassword
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                              color: Colors.grey,
-                            ),
-                            onPressed: _togglePasswordVisibility,
-                          ),
+                          // IconButton(
+                          //   icon: Icon(
+                          //     showPassword
+                          //         ? Icons.visibility
+                          //         : Icons.visibility_off,
+                          //     color: Colors.grey,
+                          //   ),
+                          //   onPressed: _togglePasswordVisibility,
+                          // ),
                           TextButton(
                             onPressed: () {
                               // Aksi untuk tombol "Forgot"
@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               "Forgot",
                               style: TextStyle(
-                                color: Color(0xFF00A59B),
+                                color: Colors.grey,
                               ),
                             ),
                           ),

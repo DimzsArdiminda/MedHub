@@ -100,7 +100,14 @@ flutter:
     - asset\logos\logo-prof-5.png
     - asset\logos\logo-prof-6.png
     - asset\login\lorem.png
-
+    - asset\brand\GoPay 1.png
+    - asset\brand\dana 1.png
+    - asset\brand\ovo 1.png
+    - asset\brand\shopeepay 1.png
+    - asset\img\image 21.png
+    - asset\img\image 20.png
+    - asset/img/banner2.png
+    - asset\img\ratting.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

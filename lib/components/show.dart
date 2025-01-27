@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:dfreindsapp/main_menu/home/payment/cart.dart';
 import 'package:flutter/material.dart';
 
 class DealCard2 extends StatelessWidget {
@@ -36,66 +37,34 @@ class DealCard2 extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Bagian Gambar
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
+            // Bagian Gambar
+            GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Cart()
+              ),
+            ),
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
               color: Color(0xFFEEEEF0),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
               ),
-                image: DecorationImage(
+              image: DecorationImage(
                 image: AssetImage(imagePath), // Menampilkan gambar dari aset
                 fit: BoxFit.cover, // Memastikan gambar memenuhi kontainer
-                ),
+              ),
+              ),
             ),
-          ),
-          // Bagian Teks dan Harga
-          Padding(
+            ),
+            // Bagian Teks dan Harga
+            Padding(
             padding: EdgeInsets.all(8),
             child: Text(title, style: TextStyle(fontSize: 14)),
-          ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   children: [
-          //     Padding(
-          //       padding: EdgeInsets.symmetric(horizontal: 8),
-          //       child: Text(
-          //         price,
-          //         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-          //       ),
-          //     ),
-          //       Stack(
-          //       alignment: Alignment.center,
-          //       children: [
-          //         Positioned(
-          //           // right: -2,
-          //           child: Container(
-          //             // padding: EdgeInsets.symmetric(horizontal: 12),
-          //           height: 20,
-          //           width: 50,
-          //           decoration: BoxDecoration(
-          //             color: Color(0xFF00A59B),
-          //             borderRadius: BorderRadius.circular(25),
-          //           ),
-          //           ),
-          //         ),
-          //         Row(
-          //         mainAxisAlignment: MainAxisAlignment.center,
-          //         children: [
-          //           Icon(Icons.star, size: 14, color: Colors.white),
-          //           SizedBox(width: 4),
-          //           Text(
-          //           rating.toString(),
-          //           style: TextStyle(fontSize: 14, color: Colors.white),
-          //           ),
-          //         ],
-          //         ),
-          //       ],
-          //       ),
-          //   ],
-          // ),
+            ),
         ],
       ),
     );

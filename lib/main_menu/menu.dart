@@ -46,44 +46,45 @@ class _MainMenuState extends State<MainMenu> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Hapus animasi
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: '',
           ),
-            BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Stack(
               children: <Widget>[
-              Icon(Icons.notifications_outlined),
-              Positioned(
-                right: 0,
-                child: Container(
-                padding: EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                constraints: BoxConstraints(
-                  minWidth: 12,
-                  minHeight: 12,
-                ),
-                child: Text(
-                  '',
-                  style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 8,
+                Icon(Icons.notifications_outlined),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 12,
+                      minHeight: 12,
+                    ),
+                    child: Text(
+                      '',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
-                ),
-              ),
               ],
             ),
             label: '',
-            ),
+          ),
           BottomNavigationBarItem(
             icon: Container(
-              padding: EdgeInsets.all(6), // Padding untuk memberi jarak di sekitar ikon
+              padding: EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: Color(0xFF0F3759),
                 shape: BoxShape.rectangle,

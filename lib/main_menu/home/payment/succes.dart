@@ -1,0 +1,113 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+
+class Succes extends StatefulWidget {
+  const Succes({super.key});
+
+  @override
+  State<Succes> createState() => _SuccesState();
+}
+
+class _SuccesState extends State<Succes> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    )..repeat(reverse: true);
+
+    _animation = Tween<double>(begin: 0, end: -20).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Center(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 60),
+               Image.asset(
+                'asset/login success/Group 3645.png',
+                height: 200,
+              ),
+              SizedBox(height: 60),
+
+              // Judul dan deskripsi
+              Text(
+                "Thank you",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+                RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: "Your Order will be delivered with invoice ",
+                  style: TextStyle(fontSize: 15, color: Colors.grey),
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: <TextSpan>[
+                  TextSpan(
+                    text: "#INV20240817",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(
+                    text: ". You can track the delivery in the order section.",
+                  ),
+                  ],
+                ),
+                ),
+              SizedBox(height: 140),
+
+
+              // Tombol Continue
+              ElevatedButton(
+                onPressed: () {
+                  // Navigasi ke halaman berikutnya
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF0F3759),
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(60),
+                  ),
+                  minimumSize: Size(double.infinity, 50), // Tombol panjang
+                ),
+                child: Text(
+                  "CONTINUE",
+                  style: TextStyle(
+                    color: Colors.white ,
+                    fontSize: 18
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
