@@ -3,6 +3,7 @@
 import 'package:dfreindsapp/components/CategoryIcon.dart';
 import 'package:dfreindsapp/components/brandlogo.dart';
 import 'package:dfreindsapp/components/dealCard.dart';
+import 'package:dfreindsapp/main_menu/home/diabetes.dart';
 import 'package:flutter/material.dart';
 
 class MedHubHome extends StatelessWidget {
@@ -198,14 +199,16 @@ class MedHubHome extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Center(
-                    child: Container(
+                    Center(
+                    child: GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Diabetes())),
+                      child: Container(
                       child: Image.asset(
                         'asset/img/banner.png'
-                      
+                      ),
                       ),
                     ),
-                  ),
+                    ),
                   SizedBox(height: 20),
                   // Deals of the Day
                   Padding(
@@ -222,7 +225,10 @@ class MedHubHome extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: Text("More"),
+                            child: Text(
+                            "More",
+                            style: TextStyle(color: Colors.green),
+                            ),
                         ),
                       ],
                     ),

@@ -88,6 +88,18 @@ flutter:
     - asset\brand\brand.png
     - asset\obat\image 137.png
     - asset\obat\image1.png
+    - asset\obat\obat1.png
+    - asset\obat\obat2.png
+    - asset\obat\obat3.png
+    - asset\obat\obat4.png
+    - asset\obat\obat5.png
+    - asset\logos\logo-prof-1.png
+    - asset\logos\logo-prof-2.png
+    - asset\logos\logo-prof-3.png
+    - asset\logos\logo-prof-4.png
+    - asset\logos\logo-prof-5.png
+    - asset\logos\logo-prof-6.png
+    - asset\login\lorem.png
 
   #   - images/a_dot_ham.jpeg
 

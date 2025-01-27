@@ -47,7 +47,7 @@ class DealCard extends StatelessWidget {
               ),
                 image: DecorationImage(
                 image: AssetImage(imagePath), // Menampilkan gambar dari aset
-                // fit: BoxFit.cover, // Memastikan gambar memenuhi kontainer
+                // fit: BoxFit, // Memastikan gambar memenuhi kontainer
                 ),
             ),
           ),

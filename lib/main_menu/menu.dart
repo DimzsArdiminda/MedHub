@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:dfreindsapp/main_menu/home/home.dart';
+import 'package:dfreindsapp/main_menu/home/profile.dart';
 import 'package:flutter/material.dart';
 
 class MainMenu extends StatefulWidget {
@@ -29,10 +30,7 @@ class _MainMenuState extends State<MainMenu> {
       'Index 3: Chat',
       style: optionStyle,
     ),
-    Text(
-      'Index 4: Profile',
-      style: optionStyle,
-    ),
+    Profile()
   ];
 
   void _onItemTapped(int index) {
