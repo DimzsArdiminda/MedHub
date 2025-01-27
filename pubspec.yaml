@@ -73,6 +73,21 @@ flutter:
     - asset/login/google.png
     - asset/logos/icon1.png
     - asset/login success/Group 3645.png
+    - asset/img/wajah.png
+    - asset/logos/icons2.png
+    - asset/logos/logo3.png
+    - asset/logos/logo4.png
+    - asset/logos/logo5.png
+    - asset/logos/logo6.png
+    - asset\img\banner.png
+    - asset\obat\image.png
+    - asset\obat\image1.png
+    - asset\brand\brand1.png
+    - asset\brand\brand2.png
+    - asset\brand\brand3.png
+    - asset\brand\brand.png
+    - asset\obat\image 137.png
+    - asset\obat\image1.png
 
   #   - images/a_dot_ham.jpeg
 

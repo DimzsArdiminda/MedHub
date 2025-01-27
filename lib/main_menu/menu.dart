@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:dfreindsapp/main_menu/home/home.dart';
 import 'package:flutter/material.dart';
 
 class MainMenu extends StatefulWidget {
@@ -15,10 +16,7 @@ class _MainMenuState extends State<MainMenu> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    MedHubHome(),
     Text(
       'Index 1: Notifications',
       style: optionStyle,
@@ -46,10 +44,6 @@ class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-        automaticallyImplyLeading: false,
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
