@@ -11,6 +11,9 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
+   int _selectedIndex = -1;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,38 +132,93 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ),
               SizedBox(height: 20),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  for (int i = 0; i < 3; i++) // Dynamic list for repetition
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Rp 252.000"),
-                          Text("500 pellets"),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildSelectableButton(0, "Rp 252.000", "500 pellets"),
+                _buildSelectableButton(1, "Rp 500.000", "1000 pellets"),
+                _buildSelectableButton(2, "Rp 1.000.000", "2000 pellets"),
+              ],
+            ),
 
-              // Rating and Reviews
-              SizedBox(height: 20),
-              Text(
-                "Rating and Reviews",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+             // Rating and Reviews Section
+            SizedBox(height: 20),
+            Text(
+              "Rating and Reviews",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 10),
+
+            // Rating Distribution (4.4 di sebelah kiri)
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "4.4",
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                    Icon(Icons.star, color: Colors.amber, size: 28),
+                      ],
+                    ),
+                    Text(
+                      "923 Ratings \nand 257 reviews",
+                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                    ),
+                  ],
                 ),
+                // vertical line
+                SizedBox(width: 20),
+                Container(
+                  width: 3,
+                  height: 60,
+                  color: Colors.grey[300],
+                ),
+                SizedBox(width: 20),
+                Expanded(
+                  child: Column(
+                    children: [
+                      _buildRatingRow(5, 67),
+                      _buildRatingRow(4, 20),
+                      _buildRatingRow(3, 7),
+                      _buildRatingRow(2, 0),
+                      _buildRatingRow(1, 2),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 20),
+
+            // Review Section
+            _buildReviewCard(
+              "Lorem Hoffman",
+              "05 August 2024",
+              4.2,
+              "Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas",
+            ),
+            SizedBox(height: 20),
+
+
+              // Review Section
+              _buildReviewCard(
+                "Lorem Hoffman",
+                "05 August 2024",
+                4.2,
+                "Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ut nisi odio. Nulla facilisi. Nunc risus massa, gravida id egestas",
               ),
               SizedBox(height: 20),
-              Image.asset("asset/img/ratting.png"),
-              SizedBox(height: 20),
+
 
               // Komentar
               _buildReviewCard(
@@ -203,6 +261,68 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 
+ Widget _buildRatingRow(int stars, int percentage) {
+  return Row(
+    children: [
+      Text("$stars", style: TextStyle(fontSize: 14)),
+      Icon(Icons.star, color: Colors.amber, size: 14),
+      SizedBox(width: 10),
+      Expanded(
+        child: LinearProgressIndicator(
+          value: percentage / 100,
+          backgroundColor: Colors.grey[300],
+          color: Colors.green,
+          minHeight: 5,
+        ),
+      ),
+      SizedBox(width: 10),
+      Text("$percentage%", style: TextStyle(fontSize: 14)),
+    ],
+  );
+}
+
+
+  Widget _buildSelectableButton(int index, String price, String quantity) {
+    bool isSelected = _selectedIndex == index;
+
+    return TextButton(
+      onPressed: () {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(EdgeInsets.all(8)),
+        side: MaterialStateProperty.resolveWith<BorderSide>(
+          (states) => BorderSide(
+            color: isSelected ? Colors.green : Colors.grey, // Warna border
+          ),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            price,
+            style: TextStyle(
+              color: isSelected ? Colors.green : Colors.black, // Warna font
+              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+            ),
+          ),
+          Text(
+            quantity,
+            style: TextStyle(
+              color: isSelected ? Colors.green : Colors.black, // Warna font
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  
   Widget _buildReviewCard(
       String name, String date, double rating, String review) {
     return Container(
